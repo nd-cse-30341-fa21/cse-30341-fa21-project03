@@ -4,7 +4,7 @@
 
 time-library() {
     library=$1
-    echo -n "  Timing $library ... "
+    printf "  Timing %-31s ... " $library
     { time env LD_PRELOAD=./lib/$library ./bin/test_05; } |& awk '/real\s+/ { print $2 }'
 }
 

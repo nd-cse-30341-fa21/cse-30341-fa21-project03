@@ -4,11 +4,11 @@
 
 test-library() {
     library=$1
-    echo -n "  Testing $library ... "
+    printf "  Testing %-30s ... " $library
     if diff -y <(env LD_PRELOAD=./lib/$library ./bin/test_03 2> /dev/null) <($library-output) >& test.log; then
-    	echo "success"
+    	echo "Success"
     else
-    	echo "failure"
+    	echo "Failure"
     	cat test.log
     	echo ""
     fi
